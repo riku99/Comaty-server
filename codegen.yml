@@ -9,3 +9,5 @@ generates:
       - 'typescript-resolvers'
     config:
       contextType: '../context#Context'
+      mappers:
+        User: '@prisma/client/index.d#User'
