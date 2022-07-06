@@ -13,6 +13,26 @@ services:
     networks:
       - comaty-networks
 
+  serevr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    environment:
+      NODE_ENV: dev
+      DATABASE_URL: postgresql://postgres:password@localhost:5432/postgres?schema=public
+    networks:
+      - comaty-networks
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./schema.graphql:/app/schema.graphql
+    ports:
+      - 4000:4000
+      - 5555:5555
+    depends_on:
+      - db
+
 volumes:
   comaty-volumes:
 networks:
