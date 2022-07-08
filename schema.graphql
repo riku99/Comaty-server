@@ -1,8 +1,47 @@
-type User {
+interface UserEntity {
   id: ID!
-  name: String!
+  nickname: String!
+  sex: SEX
+}
+
+type User implements UserEntity {
+  id: ID!
+  nickname: String!
+  sex: SEX
+}
+
+type Me implements UserEntity {
+  id: ID!
+  nickname: String!
+  sex: SEX
 }
 
 type Query {
   user(id: ID!): User!
+}
+
+input CreateUserInput {
+  nickname: String!
+  email: String!
+  idToken: String!
+  birthYear: Int!
+  birthMonth: Int!
+  birthDay: Int!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): Me!
+}
+
+enum SEX {
+  MALE
+  FEMALE
+}
+
+enum CreateUserError {
+  ALREADY_USER_EXISTING
+}
+
+enum UserGetError {
+  NOT_FOUND
 }

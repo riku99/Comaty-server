@@ -11,3 +11,4 @@ generates:
       contextType: '../context#Context'
       mappers:
         User: '@prisma/client/index.d#User'
+        Me: '@prisma/client/index.d#User'

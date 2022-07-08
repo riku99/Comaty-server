@@ -13,6 +13,17 @@ datasource db {
 model User {
   id String @id @default(uuid())
   firebaseUid String @unique
-  name String
+  nickname String
   email String @unique
+  birthYear Int
+  birthMonth Int
+  birthDay Int
+  createdAt DateTime @default(now())
+  loggedIn Boolean @default(false)
+  sex SEX?
+}
+
+enum SEX {
+  MALE
+  FEMALE
 }
