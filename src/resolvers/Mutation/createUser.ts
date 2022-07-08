@@ -34,10 +34,6 @@ export const createUser: MutationResolvers['createUser'] = async (
     data: {
       firebaseUid: session.uid,
       email: session.email,
-      nickname: input.nickname,
-      birthYear: input.birthYear,
-      birthMonth: input.birthMonth,
-      birthDay: input.birthDay,
       loggedIn: true,
     },
   });

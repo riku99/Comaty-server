@@ -22,12 +22,8 @@ export enum CreateUserError {
 }
 
 export type CreateUserInput = {
-  birthDay: Scalars['Int'];
-  birthMonth: Scalars['Int'];
-  birthYear: Scalars['Int'];
   email: Scalars['String'];
   idToken: Scalars['String'];
-  nickname: Scalars['String'];
 };
 
 export type Me = UserEntity & {
@@ -152,7 +148,6 @@ export type ResolversTypes = {
   CreateUserError: CreateUserError;
   CreateUserInput: CreateUserInput;
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   Me: ResolverTypeWrapper<User>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -168,7 +163,6 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   CreateUserInput: CreateUserInput;
   ID: Scalars['ID'];
-  Int: Scalars['Int'];
   Me: User;
   Mutation: {};
   Query: {};
