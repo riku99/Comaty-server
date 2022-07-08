@@ -14,10 +14,12 @@ type Me implements UserEntity {
   id: ID!
   nickname: String!
   sex: SEX
+  initialStatusCompletion: Boolean!
 }
 
 type Query {
   user(id: ID!): User!
+  me: Me
 }
 
 input CreateUserInput {
@@ -32,6 +34,7 @@ type Mutation {
 enum SEX {
   MALE
   FEMALE
+  NOT_SELECTED
 }
 
 enum CreateUserError {

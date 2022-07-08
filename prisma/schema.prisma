@@ -26,4 +26,5 @@ model User {
 enum SEX {
   MALE
   FEMALE
+  NOT_SELECTED
 }

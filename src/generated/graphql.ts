@@ -29,6 +29,7 @@ export type CreateUserInput = {
 export type Me = UserEntity & {
   __typename?: 'Me';
   id: Scalars['ID'];
+  initialStatusCompletion: Scalars['Boolean'];
   nickname: Scalars['String'];
   sex?: Maybe<Sex>;
 };
@@ -45,6 +46,7 @@ export type MutationCreateUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  me?: Maybe<Me>;
   user: User;
 };
 
@@ -55,7 +57,8 @@ export type QueryUserArgs = {
 
 export enum Sex {
   Female = 'FEMALE',
-  Male = 'MALE'
+  Male = 'MALE',
+  NotSelected = 'NOT_SELECTED'
 }
 
 export type User = UserEntity & {
@@ -173,6 +176,7 @@ export type ResolversParentTypes = {
 
 export type MeResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Me'] = ResolversParentTypes['Me']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  initialStatusCompletion?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   nickname?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   sex?: Resolver<Maybe<ResolversTypes['SEX']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -183,6 +187,7 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  me?: Resolver<Maybe<ResolversTypes['Me']>, ParentType, ContextType>;
   user?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>;
 };
 
