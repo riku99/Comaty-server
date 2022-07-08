@@ -21,12 +21,14 @@ services:
     environment:
       NODE_ENV: dev
       DATABASE_URL: postgresql://postgres:password@localhost:5432/postgres?schema=public
+      GOOGLE_APPLICATION_CREDENTIALS: /google_credentials.json
     networks:
       - comaty-networks
     volumes:
       - .:/app
       - /app/node_modules
       - ./schema.graphql:/app/schema.graphql
+      - ./cred.json:/google_credentials.json
     ports:
       - 4000:4000
       - 5555:5555

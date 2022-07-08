@@ -5,6 +5,7 @@ import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createServer } from 'http';
 import { join } from 'path';
+import { firebaseInit } from '~/lib/firebase';
 import { resolvers } from '../src/resolvers';
 
 const schema = loadSchemaSync(join(__dirname, '../schema.graphql'), {
@@ -17,6 +18,8 @@ const schemaWithResolvers = addResolversToSchema({
 });
 
 const start = async () => {
+  firebaseInit();
+
   const app = express();
   const httpServer = createServer(app);
 
