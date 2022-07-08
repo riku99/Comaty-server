@@ -28,9 +28,12 @@ export type CreateUserInput = {
 
 export type Me = UserEntity & {
   __typename?: 'Me';
+  birthDay?: Maybe<Scalars['Int']>;
+  birthMonth?: Maybe<Scalars['Int']>;
+  birthYear?: Maybe<Scalars['Int']>;
   id: Scalars['ID'];
   initialStatusCompletion: Scalars['Boolean'];
-  nickname: Scalars['String'];
+  nickname?: Maybe<Scalars['String']>;
   sex?: Maybe<Sex>;
 };
 
@@ -64,13 +67,13 @@ export enum Sex {
 export type User = UserEntity & {
   __typename?: 'User';
   id: Scalars['ID'];
-  nickname: Scalars['String'];
+  nickname?: Maybe<Scalars['String']>;
   sex?: Maybe<Sex>;
 };
 
 export type UserEntity = {
   id: Scalars['ID'];
-  nickname: Scalars['String'];
+  nickname?: Maybe<Scalars['String']>;
   sex?: Maybe<Sex>;
 };
 
@@ -151,6 +154,7 @@ export type ResolversTypes = {
   CreateUserError: CreateUserError;
   CreateUserInput: CreateUserInput;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Me: ResolverTypeWrapper<User>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -166,6 +170,7 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   CreateUserInput: CreateUserInput;
   ID: Scalars['ID'];
+  Int: Scalars['Int'];
   Me: User;
   Mutation: {};
   Query: {};
@@ -175,9 +180,12 @@ export type ResolversParentTypes = {
 };
 
 export type MeResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Me'] = ResolversParentTypes['Me']> = {
+  birthDay?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  birthMonth?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  birthYear?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   initialStatusCompletion?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  nickname?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  nickname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   sex?: Resolver<Maybe<ResolversTypes['SEX']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -193,7 +201,7 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
 
 export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  nickname?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  nickname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   sex?: Resolver<Maybe<ResolversTypes['SEX']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -201,7 +209,7 @@ export type UserResolvers<ContextType = Context, ParentType extends ResolversPar
 export type UserEntityResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UserEntity'] = ResolversParentTypes['UserEntity']> = {
   __resolveType: TypeResolveFn<'Me' | 'User', ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  nickname?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  nickname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   sex?: Resolver<Maybe<ResolversTypes['SEX']>, ParentType, ContextType>;
 };
 

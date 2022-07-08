@@ -1,20 +1,23 @@
 interface UserEntity {
   id: ID!
-  nickname: String!
+  nickname: String
   sex: SEX
 }
 
 type User implements UserEntity {
   id: ID!
-  nickname: String!
+  nickname: String
   sex: SEX
 }
 
 type Me implements UserEntity {
   id: ID!
-  nickname: String!
+  nickname: String
   sex: SEX
   initialStatusCompletion: Boolean!
+  birthYear: Int
+  birthMonth: Int
+  birthDay: Int
 }
 
 type Query {
