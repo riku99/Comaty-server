@@ -5,6 +5,7 @@ import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createServer } from 'http';
 import { join } from 'path';
+import { context } from '~/context';
 import { firebaseInit } from '~/lib/firebase';
 import { resolvers } from '../src/resolvers';
 
@@ -25,6 +26,7 @@ const start = async () => {
 
   const server = new ApolloServer({
     schema: schemaWithResolvers,
+    context,
   });
 
   await server.start();

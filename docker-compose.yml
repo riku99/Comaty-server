@@ -20,7 +20,7 @@ services:
     container_name: server
     environment:
       NODE_ENV: dev
-      DATABASE_URL: postgresql://postgres:password@localhost:5432/postgres?schema=public
+      DATABASE_URL: postgresql://postgres:password@db:5432/postgres?schema=public
       GOOGLE_APPLICATION_CREDENTIALS: /google_credentials.json
     networks:
       - comaty-networks
