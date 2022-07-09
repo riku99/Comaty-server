@@ -40,11 +40,17 @@ export type Me = UserEntity & {
 export type Mutation = {
   __typename?: 'Mutation';
   createUser: Me;
+  updateInitialStatus: Me;
 };
 
 
 export type MutationCreateUserArgs = {
   input: CreateUserInput;
+};
+
+
+export type MutationUpdateInitialStatusArgs = {
+  input: UpdateInitialStatusInput;
 };
 
 export type Query = {
@@ -63,6 +69,14 @@ export enum Sex {
   Male = 'MALE',
   NotSelected = 'NOT_SELECTED'
 }
+
+export type UpdateInitialStatusInput = {
+  birthDay: Scalars['Int'];
+  birthMonth: Scalars['Int'];
+  birthYear: Scalars['Int'];
+  nickname: Scalars['String'];
+  sex: Sex;
+};
 
 export type User = UserEntity & {
   __typename?: 'User';
@@ -160,6 +174,7 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   SEX: Sex;
   String: ResolverTypeWrapper<Scalars['String']>;
+  UpdateInitialStatusInput: UpdateInitialStatusInput;
   User: ResolverTypeWrapper<User>;
   UserEntity: ResolversTypes['Me'] | ResolversTypes['User'];
   UserGetError: UserGetError;
@@ -175,6 +190,7 @@ export type ResolversParentTypes = {
   Mutation: {};
   Query: {};
   String: Scalars['String'];
+  UpdateInitialStatusInput: UpdateInitialStatusInput;
   User: User;
   UserEntity: ResolversParentTypes['Me'] | ResolversParentTypes['User'];
 };
@@ -192,6 +208,7 @@ export type MeResolvers<ContextType = Context, ParentType extends ResolversParen
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createUser?: Resolver<ResolversTypes['Me'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'input'>>;
+  updateInitialStatus?: Resolver<ResolversTypes['Me'], ParentType, ContextType, RequireFields<MutationUpdateInitialStatusArgs, 'input'>>;
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {

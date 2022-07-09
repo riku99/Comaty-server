@@ -30,8 +30,17 @@ input CreateUserInput {
   idToken: String!
 }
 
+input UpdateInitialStatusInput {
+  nickname: String!
+  birthYear: Int!
+  birthMonth: Int!
+  birthDay: Int!
+  sex: SEX!
+}
+
 type Mutation {
   createUser(input: CreateUserInput!): Me!
+  updateInitialStatus(input: UpdateInitialStatusInput!): Me!
 }
 
 enum SEX {
