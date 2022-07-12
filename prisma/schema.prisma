@@ -21,6 +21,8 @@ model User {
   createdAt DateTime @default(now())
   loggedIn Boolean @default(false)
   sex SEX?
+  bio String?
+  height Int?
 }
 
 enum SEX {
