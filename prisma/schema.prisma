@@ -11,18 +11,32 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  firebaseUid String @unique
-  nickname String?
-  email String @unique
-  birthYear Int?
-  birthMonth Int?
-  birthDay Int?
-  createdAt DateTime @default(now())
-  loggedIn Boolean @default(false)
-  sex SEX?
-  bio String?
+  id          String   @id @default(uuid())
+  firebaseUid String   @unique
+  nickname    String?
+  email       String   @unique
+  birthYear   Int?
+  birthMonth  Int?
+  birthDay    Int?
+  createdAt   DateTime @default(now())
+  loggedIn    Boolean  @default(false)
+  sex         SEX?
+  bio         String?
+  height      Int?
+
+  profileImages UserProfileImage[]
+}
+
+model UserProfileImage {
+  id     Int    @id @default(autoincrement())
+  url    String
+  width  Int?
   height Int?
+  userId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 enum SEX {
